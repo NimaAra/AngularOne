@@ -123,6 +123,11 @@
     <Content Include="Client\app\core\systemFileData.service.js" />
     <Content Include="Client\app\core\nav-bar\navBar.component.js" />
     <Content Include="Client\app\core\nav-bar\navBar.module.js" />
+    <Content Include="Client\app\core\user.service.js" />
+    <Content Include="Client\app\forms\formResult.component.js" />
+    <Content Include="Client\app\forms\formResult.html" />
+    <Content Include="Client\app\forms\forms.component.js" />
+    <Content Include="Client\app\forms\forms.html" />
     <Content Include="Client\app\file-removal-confirmation\fileRemovalConfirmation.service.js" />
     <Content Include="Client\app\file-removal-confirmation\fileRemovalConfirmation.html" />
     <Content Include="Client\app\file-list-page\fileListPage.component.js" />

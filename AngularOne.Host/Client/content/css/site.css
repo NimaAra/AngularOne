@@ -31,3 +31,8 @@
     animation: fadeIn 0.5s;
     display: block !important;
 }
+
+/*Form validation*/
+input.ng-touched.ng-invalid {
+    border: 2px #ff0000 solid;
+}

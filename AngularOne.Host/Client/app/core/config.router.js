@@ -32,7 +32,18 @@
             name: "FileSearch",
             url: "/file-search",
             template: "<file-search></file-search>"
-        }
+        },
+        {
+            name: "Forms",
+            url: "/forms",
+            template: "<forms></forms>"
+        },
+            {
+                name: "Forms.result",
+                parent: "Forms",
+                template: "<form-result></form-result>",
+                hide: true
+            }
     ];
 
     configureRouter.$inject = ["$stateProvider", "$urlMatcherFactoryProvider", "$urlRouterProvider", "$locationProvider"];

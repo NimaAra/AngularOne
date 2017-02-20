@@ -1,0 +1,29 @@
+﻿<div>
+    <div class="row">
+        <div class="col-md-6">
+            <form name="someForm" ng-submit="vm.submit()" novalidate>
+                <div class="form-group" 
+                     ng-class="{'has-error': someForm.username.$invalid, 'has-success': !someForm.username.$invalid}">
+                    <label class="control-label" for="username">Username: </label>
+                    <input class="form-control" type="text" id="username" name="username" placeholder="User name" 
+                           ng-model="vm.user.username" required />
+                    <div class="help-block" ng-messages="someForm.username.$error">
+                        <div ng-message="required">The field is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="userAge">Age: </label>
+                    <input class="form-control" type="number" id="age" name="userAge" placeholder="User age"
+                           ng-model="vm.user.age" />
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+            <div class="row" ui-view>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <pre>{{someForm | json}}</pre>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+
+    <title>Angular One</title>
+
+    <script type="text/javascript">
+        // for html5 routing mode
+        document.write(`<base href="${document.location}" />`);
+
+        // Must be first. IE10 mobile viewport fix
+        if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            var mq = "@@-ms-viewport{width:auto!important}";
+            msViewportStyle.appendChild(document.createTextNode(mq));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet"/>
+    <link href="Client/content/css/angular-toastr.min.css" rel="stylesheet"/>
+    <link href="Client/content/css/ngProgress.css" rel="stylesheet"/>
+    <link href="Client/content/css/site.css" rel="stylesheet"/>
+</head>
+<body ng-app="app" class="ng-cloak">
+
+    <nav-bar></nav-bar>
+    <div class="container" ui-view></div>
+
+    
+    <!--external-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="Client/content/js/angular-toastr.tpls.min.js"></script>
+    <script src="Client/content/js/ngProgress.js"></script>
+
+    <!--app-->
+    <script src="Client/app/app.module.js"></script>
+    <script src="Client/app/core/app.core.module.js"></script>
+    <script src="Client/app/core/config.router.js"></script>
+    <script src="Client/app/core/systemFileData.service.js"></script>
+    <script src="Client/app/core/fileSearcher.service.js"></script>
+    <script src="Client/app/file-removal-confirmation/fileRemovalConfirmation.service.js"></script>
+    
+    <!--common-->
+    <script src="Client/app/common/common.module.js"></script>
+    <script src="Client/app/common/exceptionHandler.decorator.js"></script>
+    <script src="Client/app/common/http.interceptor.js"></script>
+    <script src="Client/app/common/unsafe.filter.js"></script>
+    <script src="Client/app/common/localStorage.service.js"></script>
+    <script src="Client/app/common/alerter.service.js"></script>
+    <script src="Client/app/common/messageHub.service.js"></script>
+
+    <script src="Client/app/core/nav-bar/navBar.module.js"></script>
+    <script src="Client/app/core/nav-bar/navBar.component.js"></script>
+
+    <!--components-->
+    <script src="Client/app/file-list/fileList.component.js"></script>
+    <script src="Client/app/file-list-page/fileListPage.component.js"></script>
+    <script src="Client/app/file-detail/fileDetail.component.js"></script>
+    <script src="Client/app/file-search/fileSearch.component.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <pre>Page: {{vm.currentPage}} / {{numPages}}</pre>
+        <ul uib-pagination
+            total-items="vm.totalItems"
+            max-size="vm.maxPageSizeToDisplay"
+            items-per-page="vm.itemsPerPage"
+            ng-model="vm.currentPage"
+            ng-change="vm.pageChanged()"
+            boundary-links="true"
+            num-pages="numPages"></ul>
+
+        <table class="table table-condensed table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Path</th>
+                <th>Extension</th>
+                <th>Size(bytes)</th>
+                <th>Directory</th>
+                <th>Remove</th>
+            </tr>
+
+            <tr ng-repeat="item in vm.files">
+                <td ng-click="vm.getFileDetail(item)">{{item.fileName}}</td>
+                <td ng-click="vm.getFileDetail(item)">{{item.fullName}}</td>
+                <td ng-click="vm.getFileDetail(item)">{{item.extension}}</td>
+                <td ng-click="vm.getFileDetail(item)">{{item.size | number}}</td>
+                <td ng-click="vm.getFileDetail(item)">{{item.directory}}</td>
+                <td><button class="btn btn-xs btn-danger" ng-click="vm.delete(item)"><i class="fa fa-trash"></i></button></td>
+            </tr>
+        </table>
+        <ul uib-pagination
+            total-items="vm.totalItems"
+            max-size="vm.maxPageSizeToDisplay"
+            items-per-page="vm.itemsPerPage"
+            ng-model="vm.currentPage"
+            ng-change="vm.pageChanged()"
+            boundary-links="true"
+            num-pages="numPages"></ul>
+    </div>
+</div>

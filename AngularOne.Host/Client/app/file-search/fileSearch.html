@@ -1,0 +1,15 @@
+﻿<div>
+    <div class="col-sm-11">
+        <input type="text" class="form-control" placeholder="Start typing"
+               ng-model="vm.selected"
+               ng-model-options="{debounce: 500, blur: 250}"
+               uib-typeahead="file.fullName for file in vm.getFiles($viewValue)"
+               typeahead-loading="loadingLocations"
+               typeahead-no-results="noResults" />
+
+        <div ng-show="noResults">No results found.</div>    
+    </div>
+    <div class="col-sm-1">
+        <i ng-show="loadingLocations" class="fa fa-spinner fa-3x fa-spin"></i>
+    </div>
+</div>

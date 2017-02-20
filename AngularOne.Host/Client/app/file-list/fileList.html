@@ -1,0 +1,50 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group form-inline">
+            <div class="input-group col-xs-6">
+                <input class="form-control" type="text" ng-model="vm.directory" placeholder="Directory"/>
+            </div>
+            <div class="input-group col-xs-2">
+                <select class="form-control"
+                        ng-if="!freeSearch"
+                        ng-init="exts = ['*.txt', '*.jpeg', '*.bin']"
+                        ng-model="vm.searchPattern"
+                        ng-options="item for item in exts"></select>
+                <input class="form-control" type="text" ng-if="freeSearch" ng-model="vm.searchPattern" placeholder="Search pattern" />
+            </div>
+            <div class="input-group col-xs-1">
+                <input class="form-control" type="number" ng-model="vm.skip" />
+            </div>
+            <div class="input-group col-xs-1">
+                <input class="form-control" type="number" ng-model="vm.take" />
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="freeSearch"> Free Search
+                </label>
+            </div>
+
+            <button class="btn btn-primary" ng-click="vm.getFiles()">Submit</button>
+        </div>
+    </div>
+
+    <div class="col-xs-12">
+        <table class="table table-condensed table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Path</th>
+                <th>Extension</th>
+                <th>Size(bytes)</th>
+                <th>Directory</th>
+            </tr>
+
+            <tr ng-repeat="item in vm.files" ng-click="vm.getFileDetail(item)">
+                <td>{{item.fileName}}</td>
+                <td>{{item.fullName}}</td>
+                <td>{{item.extension}}</td>
+                <td>{{item.size | number}}</td>
+                <td>{{item.directory}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -4,6 +4,7 @@
     angular.module("app.core", [
         "ui.router",
         "ui.bootstrap",
-        "ngProgress"
+        "ngProgress",
+        "SignalR"
     ]);
 })();

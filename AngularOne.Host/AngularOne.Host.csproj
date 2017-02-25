@@ -43,12 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Easy.Common, Version=1.8.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Easy.Common.1.8.3\lib\net45\Easy.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -56,8 +56,24 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SimpleInjector, Version=3.3.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
@@ -116,14 +132,20 @@
     <Content Include="Client\app\common\localStorage.service.js" />
     <Content Include="Client\app\common\messageHub.service.js" />
     <Content Include="Client\app\common\unsafe.filter.js" />
-    <Content Include="Client\app\core\config.router.js" />
+    <Content Include="Client\app\core\app.core.config.js" />
+    <Content Include="Client\app\core\app.core.routes.js" />
     <Content Include="Client\app\core\app.core.module.js" />
     <Content Include="Client\app\core\fileSearcher.service.js" />
     <Content Include="Client\app\core\nav-bar\navBar.html" />
+    <Content Include="Client\app\core\priceHub.service.js" />
     <Content Include="Client\app\core\systemFileData.service.js" />
     <Content Include="Client\app\core\nav-bar\navBar.component.js" />
     <Content Include="Client\app\core\nav-bar\navBar.module.js" />
     <Content Include="Client\app\core\user.service.js" />
+    <Content Include="Client\app\portfolio\portfolio.component.js" />
+    <Content Include="Client\app\portfolio\portfolio.html" />
+    <Content Include="Client\app\pub-sub\pubSub.component.js" />
+    <Content Include="Client\app\pub-sub\pubSub.html" />
     <Content Include="Client\app\forms\formResult.component.js" />
     <Content Include="Client\app\forms\formResult.html" />
     <Content Include="Client\app\forms\forms.component.js" />
@@ -150,19 +172,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\SimpleInjectorWebApiInitializer.cs" />
+    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\Controllers\FileSystemController.cs" />
+    <Compile Include="Server\Hubs\PriceHub.cs" />
     <Compile Include="Server\Models\FileSystemResult.cs" />
-    <Compile Include="Server\Models\IValueProvider.cs" />
-    <Compile Include="Server\Models\ValueProvider.cs" />
+    <Compile Include="Server\Models\Price.cs" />
+    <Compile Include="Server\Services\IPricing.cs" />
+    <Compile Include="Server\Services\Pricing.cs" />
+    <Compile Include="Server\Models\Company.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Client\app\common\http.interceptor.js" />
+    <Content Include="FTSE_100.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

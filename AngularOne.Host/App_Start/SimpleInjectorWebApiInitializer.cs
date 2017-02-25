@@ -5,7 +5,6 @@ namespace AngularOne.Host.App_Start
     using System.Web.Http;
     using SimpleInjector;
     using SimpleInjector.Integration.WebApi;
-    using Server.Models;
 
     public static class SimpleInjectorWebApiInitializer
     {
@@ -30,7 +29,7 @@ namespace AngularOne.Host.App_Start
         {
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>(Lifestyle.Scoped);
-            container.Register<IValueProvider, ValueProvider>(Lifestyle.Scoped);
+            // container.Register<IPricing, Pricing>(Lifestyle.Singleton);
         }
     }
 }

@@ -43,11 +43,21 @@
                 parent: "Forms",
                 template: "<form-result></form-result>",
                 hide: true
-            }
+            },
+        {
+            name: "PubSub",
+            url: "/pubsub",
+            template: "<div><pub-sub type=\"pub\"></pub-sub><pub-sub type=\"sub\"></pub-sub><pub-sub type=\"sub\"></pub-sub></div>"
+        },
+        {
+            name: "Portfolio",
+            url: "/portfolio",
+            template: "<portfolio></portfolio>"
+        }
     ];
 
-    configureRouter.$inject = ["$stateProvider", "$urlMatcherFactoryProvider", "$urlRouterProvider", "$locationProvider"];
-    function configureRouter($stateProvider, $urlMatcherFactoryProvider, $urlRouterProvider, $locationProvider) {
+    configureRoutes.$inject = ["$stateProvider", "$urlMatcherFactoryProvider", "$urlRouterProvider", "$locationProvider"];
+    function configureRoutes($stateProvider, $urlMatcherFactoryProvider, $urlRouterProvider, $locationProvider) {
         routes.forEach(state => {
             $stateProvider.state(state);
         });
@@ -60,6 +70,6 @@
     }
 
     module
-        .config(configureRouter)
+        .config(configureRoutes)
         .constant("appRoutes", routes);
 })(angular.module("app.core"));

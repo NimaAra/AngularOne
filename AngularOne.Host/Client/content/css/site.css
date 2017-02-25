@@ -1,8 +1,4 @@
-﻿[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
-}
-
-.ng-move {
+﻿.ng-move {
     -webkit-animation: pulse 0.3s;
     -moz-animation: pulse 0.3s;
     -o-animation: pulse 0.3s;
@@ -35,4 +31,12 @@
 /*Form validation*/
 input.ng-touched.ng-invalid {
     border: 2px #ff0000 solid;
+}
+
+.price-highlight-up {
+    background-color: lawngreen;
+}
+
+.price-highlight-down {
+    background-color: red;
 }

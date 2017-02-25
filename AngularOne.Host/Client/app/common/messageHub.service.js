@@ -5,20 +5,26 @@
     function service($rootScope) {
         return {
             publish: publish,
-            subscribe: subscribe
+            subscribe: subscribe,
+            getEventSubscriberCount: getEventSubscriberCount
         };
 
         function publish(eventName, payload) {
-            $rootScope.$broadcast(eventName, payload);
+            $rootScope.$emit(eventName, payload);
         }
 
         function subscribe(eventName, handler) {
             const token = $rootScope.$on(eventName, function (evt, payload) {
-                handler(evt.name, payload);
+                handler(payload);
             });
             return {
                 dispose: token
             };
+        }
+
+        function getEventSubscriberCount(eventName) {
+            if (!$rootScope.$$listeners[eventName]) { return 0; }
+            return $rootScope.$$listeners[eventName].length;
         }
     }
 

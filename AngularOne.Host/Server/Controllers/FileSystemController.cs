@@ -10,13 +10,6 @@
     [RoutePrefix("api/system")]
     public sealed class FileSystemController : ApiController
     {
-        private readonly string _value;
-
-        public FileSystemController(IValueProvider valueProvider)
-        {
-            _value = valueProvider.Value;
-        }
-
         [HttpGet]
         [Route("files")]
         public IEnumerable<FileSystemResult> GetFiles(

@@ -39,9 +39,13 @@
 	}
 
 	const id = "httpInterceptor";
+
+	configureIterceptor.$inject = ["$httpProvider"]
+	function configureIterceptor($httpProvider) {
+		$httpProvider.interceptors.push(id);
+	}
+
 	module
         .factory(id, interceptor)
-        .config(function ($httpProvider) {
-            $httpProvider.interceptors.push(id);
-        });
+        .config(configureIterceptor);
 })(angular.module("common"));

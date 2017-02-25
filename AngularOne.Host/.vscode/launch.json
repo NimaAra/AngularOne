@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "diagnosticLogging": true,
+            "url": "http://localhost:5000",//Change to whatever you homepage is
+            "runtimeArgs": [
+                //"--new-window", //Open in new window
+                "--user-data-dir=/home/user", //Can be any directory. Makes chrome load in a different directory so that it opens in a new instance.
+                "--remote-debugging-port=9222" //Open in port 9222 (standard chrome debug port)
+            ],
+            "webRoot": "${workspaceRoot}", //The directory that contains js, ts and map files
+            "sourceMaps": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${file}",
+            "cwd": "${workspaceRoot}"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Process",
+            "port": 5858
+        }
+    ]
+}

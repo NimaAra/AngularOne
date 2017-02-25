@@ -11,9 +11,6 @@
     <title>Angular One</title>
 
     <script type="text/javascript">
-        // for html5 routing mode
-        document.write(`<base href="${document.location}" />`);
-
         // Must be first. IE10 mobile viewport fix
         if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
             var msViewportStyle = document.createElement("style");
@@ -21,39 +18,54 @@
             msViewportStyle.appendChild(document.createTextNode(mq));
             document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
         }
+        
+        // for html5 routing mode
+        document.write(`<base href="${document.location}" />`);        
     </script>
 
-    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet"/>
     <link href="Client/content/css/angular-toastr.min.css" rel="stylesheet"/>
     <link href="Client/content/css/ngProgress.css" rel="stylesheet"/>
     <link href="Client/content/css/site.css" rel="stylesheet"/>
+
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
 </head>
-<body ng-app="app" class="ng-cloak">
+<body class="ng-cloak">
 
     <nav-bar></nav-bar>
     <div class="container" ui-view></div>
 
-    
     <!--external-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular-animate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signalr.js/2.2.1/jquery.signalR.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-signalr-hub/1.6.2/signalr-hub.min.js"></script>
     <script src="Client/content/js/angular-toastr.tpls.min.js"></script>
     <script src="Client/content/js/ngProgress.js"></script>
+
 
     <!--app-->
     <script src="Client/app/app.module.js"></script>
     <script src="Client/app/core/app.core.module.js"></script>
-    <script src="Client/app/core/config.router.js"></script>
+    <script src="Client/app/core/app.core.config.js"></script>
+    <script src="Client/app/core/app.core.routes.js"></script>
     <script src="Client/app/core/user.service.js"></script>
     <script src="Client/app/core/systemFileData.service.js"></script>
     <script src="Client/app/core/fileSearcher.service.js"></script>
+    <script src="Client/app/core/priceHub.service.js"></script>
     <script src="Client/app/file-removal-confirmation/fileRemovalConfirmation.service.js"></script>
-    
+
     <!--common-->
     <script src="Client/app/common/common.module.js"></script>
     <script src="Client/app/common/exceptionHandler.decorator.js"></script>
@@ -62,6 +74,7 @@
     <script src="Client/app/common/localStorage.service.js"></script>
     <script src="Client/app/common/alerter.service.js"></script>
     <script src="Client/app/common/messageHub.service.js"></script>
+    <script src="Client/app/common/priceHighlight.directive.js"></script>
 
     <script src="Client/app/core/nav-bar/navBar.module.js"></script>
     <script src="Client/app/core/nav-bar/navBar.component.js"></script>
@@ -73,6 +86,8 @@
     <script src="Client/app/file-search/fileSearch.component.js"></script>
     <script src="Client/app/forms/forms.component.js"></script>
     <script src="Client/app/forms/formResult.component.js"></script>
+    <script src="Client/app/pub-sub/pubSub.component.js"></script>
+    <script src="Client/app/portfolio/portfolio.component.js"></script>
 
 </body>
 </html>

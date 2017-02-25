@@ -1,0 +1,44 @@
+﻿<div id="ngProgress-companySearchBox">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4>Portfolio</h4>
+            <div class="form-inline">
+                <input type="text" class="form-control" size="50" placeholder="FTSE 100 Company Name"
+                    ng-model="vm.selectedCompany"
+                    uib-typeahead="item as vm.companySearchFormatter(item) for item in vm.onCompanySearch($viewValue)"
+                    typeahead-min-length="2"
+                    typeahead-wait-ms="500"
+                    typeahead-loading="loading"
+                    typeahead-is-open="isOpen"
+                    typeahead-no-results="noResult"
+                    typeahead-on-select="vm.onCompanySelected($item, $model, $label)"/>
+
+                <button class="btn btn-sm btn-primary"
+                    ng-click="vm.subscribe(vm.selectedCompany)"
+                    ng-disabled="!vm.companyMatched">Subscribe</button>
+                <button class="btn btn-sm btn-success"
+                    ng-click="vm.savePortfolio()">Save</button>
+                <button class="btn btn-sm btn-success"
+                    ng-click="vm.restorePortfolio()">Load</button>
+            </div>
+            <span ng-show="noResult && vm.selectedCompany">No results found</span>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            <tr ng-repeat="item in vm.portfolioList track by item.symbol">
+                <td class="col-md-1">{{::item.symbol}}</td>
+                <td class="col-md-10">{{::item.name}}</td>
+                <td class="col-md-1" price-highlight="item.price" price-highlight-timeout="350">
+                    {{item.price | currency:"£":2}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

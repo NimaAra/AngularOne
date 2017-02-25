@@ -7,12 +7,12 @@
         const store = $window.localStorage;
 
         return {
-            add: add,
+            set: set,
             get: get,
             remove: remove
         };
 
-        function add(key, value) {
+        function set(key, value) {
             store.setItem(key, angular.toJson(value));
         }
 

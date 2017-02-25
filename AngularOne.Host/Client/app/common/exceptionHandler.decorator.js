@@ -1,7 +1,7 @@
 ﻿(function (module) {
     "use strict";
     
-    configure.$inject = ["$delegate", "$injector"];
+    decorator.$inject = ["$delegate", "$injector"];
     function decorator($delegate, $injector) {
         return function (exception, cause) {
             

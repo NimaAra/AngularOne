@@ -1,0 +1,20 @@
+﻿<div ng-if="vm.type === 'pub'" class="col-xs-3">
+    <h4>Publisher</h4>
+    <pre>{{vm.publicationCount}}</pre>
+    <span>Subscribers: <pre>{{vm.subscriberCount}}</pre></span>
+    <div class="button-group">
+        <button class="btn btn-sm btn-primary" ng-click="vm.publish()">Start</button>
+        <button class="btn btn-sm btn-danger" ng-click="vm.unpublish()">Stop</button>
+    </div>
+    <div class="button-group">
+        <button class="btn btn-sm btn-info" ng-click="vm.getSubscriberCount()">Get Subscriber Count</button>
+    </div>
+</div>
+<div ng-if="vm.type === 'sub'" class="col-xs-4">
+    <h4>Subscriber</h4>
+    <pre>{{vm.payload}}</pre>
+    <div class="button-group">
+        <button class="btn btn-sm btn-primary" ng-click="vm.subscribe()">Start</button>
+        <button class="btn btn-sm btn-danger" ng-click="vm.unsubscribe()">Stop</button>
+    </div>
+</div>

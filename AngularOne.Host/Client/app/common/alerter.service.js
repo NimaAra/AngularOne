@@ -13,25 +13,33 @@
             error: error
         };
 
-        function success(msg) {
-            console.log(msg);
-            toastr.success(msg, "");
+        function success(msg, object) {
+            dispatch(toastr.success, msg, object);            
         }
 
-        function info(msg) {
-            console.log(msg);
-            toastr.info(msg, "");
+        function info(msg, object) {
+            dispatch(toastr.info, msg, object);
         }
 
-        function warn(msg) {
-            console.log(msg);
-            toastr.warning(msg, "");
+        function warn(msg, object) {
+            dispatch(toastr.warning, msg, object);
         }
 
-        function error(msg) {
-            console.log(msg);
-            toastr.error(msg, "");
+        function error(msg, object) {
+            dispatch(toastr.error, msg, object);
         }
+
+        function dispatch(fn, msg, object) {
+            if(object) {
+                const json = JSON.stringify(object);
+                
+                console.log(msg, object);
+                fn(json, msg);                
+            } else {
+                console.log(msg);
+                fn(msg, "");
+            }
+        }        
 
         function configureToastr(config) {
             config.autoDismiss = true;
@@ -51,5 +59,4 @@
     }
 
     module.factory("alerter", service);
-
 })(angular.module("common"));

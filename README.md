@@ -1,5 +1,5 @@
 # AngularOne
-An Angular 1 sample application
+An Angular 1 sample application with components.
 
 #### Course:
 https://ngcourse-1.rangle.io/

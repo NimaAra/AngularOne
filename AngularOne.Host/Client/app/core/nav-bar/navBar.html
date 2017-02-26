@@ -1,14 +1,12 @@
-﻿<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="navbar-header">
-                <a ng-href="/" class="navbar-brand">AngularOne</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li ng-repeat="item in vm.routes" ui-sref-active="active">
-                    <a ng-if="!item.hide" ui-sref="{{item.name}}">{{item.name}}</a>
-                </li>
-            </ul>
+﻿<nav class="navbar navbar-default container-fluid">
+    <div class="row">
+        <div class="navbar-header">
+            <a ng-href="/" class="navbar-brand">AngularOne</a>
         </div>
+        <ul class="nav navbar-nav">
+            <li ng-repeat="item in vm.routes" ui-sref-active="active">
+                <a ng-if="!item.hide" ui-sref="{{item.name}}">{{item.name}}</a>
+            </li>
+        </ul>
     </div>
 </nav>

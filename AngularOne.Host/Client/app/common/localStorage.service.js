@@ -9,6 +9,7 @@
         return {
             set: set,
             get: get,
+            containsKey: containsKey,
             remove: remove
         };
 
@@ -22,6 +23,11 @@
                 value = angular.fromJson(value);
             }
             return value;
+        }
+
+        function containsKey(key) {
+            let value = store.getItem(key);
+            return value || false;
         }
 
         function remove(key) {

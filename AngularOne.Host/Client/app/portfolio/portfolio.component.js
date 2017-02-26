@@ -13,15 +13,20 @@
         vm.selectedCompany = undefined;
         vm.onCompanySearch = onCompanySearch;
         vm.subscribe = subscribe;
+        vm.unsubscribe = unsubscribe;
         vm.companySearchFormatter = companySearchFormatter;
         vm.onCompanySelected = onCompanySelected;
+        vm.canSavePortfolio = canSavePortfolio;
+        vm.canLoadPortfolio = canLoadPortfolio;
         vm.savePortfolio = savePortfolio;
         vm.restorePortfolio = restorePortfolio;
-        
+        vm.orderPortfolio = orderPortfolio;
+
         let progressBar = undefined;
         let priceSubscriber = undefined;
         let companySearchResultSubscriber = undefined;
         let searchPromise = undefined;
+        let isPortfolioDirty = true;
 
         function onInit() {
             progressBar = ngProgressFactory.createInstance();
@@ -36,7 +41,7 @@
                         vm.portfolioList[idx].price = payload.value, 2;
                     }
                 });
-
+                
             companySearchResultSubscriber = messageHub.subscribe("priceHub.onCompanySearchResult",
                 result => {
                     progressBar.complete();
@@ -66,13 +71,24 @@
         function subscribe(company) {
             let idx = _.findIndex(vm.portfolioList, x => x.symbol == company.symbol);
             
-            if(idx == -1) { 
+            if(idx === -1) { 
                 vm.portfolioList.push(company);
+                isPortfolioDirty = true;
                 priceHub.subscribe(company.symbol);
             }
 
             vm.selectedCompany = undefined;
             vm.companyMatched = false;
+        }
+
+        function unsubscribe(company) {
+            let idx = _.findIndex(vm.portfolioList, x => x.symbol == company.symbol);
+            
+            if(idx !== -1) { 
+                vm.portfolioList.splice(idx, 1);
+                isPortfolioDirty = true;
+                priceHub.unsubscribe(company.symbol);
+            }            
         }
 
         function companySearchFormatter(value) {
@@ -84,15 +100,41 @@
             vm.companyMatched = true;
         }
 
+        function canSavePortfolio() {
+            return vm.portfolioList.length > 0 && isPortfolioDirty;
+        }
+
+        function canLoadPortfolio() {
+            return localStorage.containsKey("user.portfolio") && isPortfolioDirty;
+        }
+
         function savePortfolio() {
             localStorage.set("user.portfolio", vm.portfolioList);
             alerter.success("Portfolio saved sucessfully.");
+            isPortfolioDirty = false;
         }
 
         function restorePortfolio() {
             let portfolio = localStorage.get("user.portfolio");
+            
+            if(!portfolio) {
+                alerter.warn("Portfolio could not be loaded.");
+            }
+            
+            vm.portfolioList.splice(0, vm.portfolioList.length);
             portfolio.forEach(subscribe);
+            isPortfolioDirty = false;
             alerter.success("Portfolio loaded sucessfully.");
+        }
+
+        function orderPortfolio(column, isAscending) {            
+            let tmpArray = _.sortBy(vm.portfolioList, column);
+
+            if(isAscending) {
+               vm.portfolioList = tmpArray; 
+            } else {
+                vm.portfolioList = tmpArray.reverse();
+            }
         }
     }
 

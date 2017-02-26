@@ -131,6 +131,7 @@
     <Content Include="Client\app\common\exceptionHandler.decorator.js" />
     <Content Include="Client\app\common\localStorage.service.js" />
     <Content Include="Client\app\common\messageHub.service.js" />
+    <Content Include="Client\app\common\priceHighlight.directive.js" />
     <Content Include="Client\app\common\unsafe.filter.js" />
     <Content Include="Client\app\core\app.core.config.js" />
     <Content Include="Client\app\core\app.core.routes.js" />
@@ -192,6 +193,7 @@
     <Content Include="FTSE_100.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\AngularOne - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

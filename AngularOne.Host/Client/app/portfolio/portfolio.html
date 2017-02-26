@@ -1,7 +1,7 @@
 ﻿<div id="ngProgress-companySearchBox">
     <div class="row">
         <div class="col-sm-12">
-            <h4>Portfolio</h4>
+            <h4>Portfolio</h4>            
             <div class="form-inline">
                 <input type="text" class="form-control" size="50" placeholder="FTSE 100 Company Name"
                     ng-model="vm.selectedCompany"
@@ -17,8 +17,10 @@
                     ng-click="vm.subscribe(vm.selectedCompany)"
                     ng-disabled="!vm.companyMatched">Subscribe</button>
                 <button class="btn btn-sm btn-success"
+                    ng-disabled="!vm.canSavePortfolio()"
                     ng-click="vm.savePortfolio()">Save</button>
                 <button class="btn btn-sm btn-success"
+                    ng-disabled="!vm.canLoadPortfolio()"
                     ng-click="vm.restorePortfolio()">Load</button>
             </div>
             <span ng-show="noResult && vm.selectedCompany">No results found</span>
@@ -27,13 +29,16 @@
     <br>
     <div class="row">
         <table class="table">
-            <tr>
-                <th>Symbol</th>
-                <th>Name</th>
+            <tr ng-init="ascending=false">
+                <th><a ng-href="#/portfolio" ng-click="vm.orderPortfolio('symbol', ascending = !ascending)">Symbol</a></th>
+                <th><a ng-href="#/portfolio" ng-click="vm.orderPortfolio('name', ascending = !ascending)">Name</a></th>
                 <th>Price</th>
             </tr>
             <tr ng-repeat="item in vm.portfolioList track by item.symbol">
-                <td class="col-md-1">{{::item.symbol}}</td>
+                <td class="col-md-1">
+                    <a ng-click="vm.unsubscribe(item)" ng-href="#/portfolio"><i class="fa fa-times" style="color: red;"></i></a>
+                    <span>{{::item.symbol}}</span>
+                </td>
                 <td class="col-md-10">{{::item.name}}</td>
                 <td class="col-md-1" price-highlight="item.price" price-highlight-timeout="350">
                     {{item.price | currency:"£":2}}

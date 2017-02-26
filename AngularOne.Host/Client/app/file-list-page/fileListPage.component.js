@@ -8,7 +8,7 @@
         vm.$onInit = onInit;
 
         vm.files = [];
-        vm.directory = "C:\\";
+        vm.directory = "D:\\";
         vm.searchPattern = "*.txt";
 
         vm.itemsPerPage = 15;

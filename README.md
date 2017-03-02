@@ -16,3 +16,7 @@ https://www.airpair.com/angularjs/posts/angularjs-performance-large-applications
 
 #### Deployment:
 http://www.jvandemo.com/how-to-configure-your-angularjs-application-using-environment-variables/
+
+#### Charting:
+http://jtblin.github.io/angular-chart.js/
+http://epochjs.github.io/epoch/getting-started/
